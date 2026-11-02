@@ -1,7 +1,7 @@
 body {
   background-color: rgb(16, 13, 13);
   background-image: url("assets/background.png");
-  background-position: right;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -22,12 +22,45 @@ header {
   border-left: 2px dotted white;
   border-bottom: 2px solid white;
   padding: 10px;
-  margin: 30px auto;
-  max-width: 1000px;
+  margin: 30px 30px;
+  max-width: 1250px;
   color: white;
+  backdrop-filter: blur(10px);
+}
+.card-conteudo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .imagem {
-  max-width: 5%;
+  max-width: 10%;
   height: auto;
+}
+.card-texto {
+  text-align: justify;
+}
+.ficha {
+  font-size: medium;
+  font-style: italic;
+}
+.penguin {
+  z-index: -1;
+  position: fixed;
+  right: 1px;
+  bottom: 0px;
+  transform: rotate(-15deg);
+  image-rendering: pixelated;
+  width: 500px;
+}
+p {
+  font-size: 1rem;
+}
+h3 {
+  font-size: 1rem;
+  color: bisque;
+}
+.card-titulo {
+  color: rgb(213, 240, 240);
+  font-size: xx-large;
 }
