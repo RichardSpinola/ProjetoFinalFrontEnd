@@ -9,18 +9,21 @@ body {
   padding: 0;
   font-family: monospace;
 }
+
 header {
   background-color: rgba(0, 0, 0, 0.875);
   border-bottom: 2px dotted white;
   padding: 1px 10px;
 }
+
 .titulo {
-  color: rgb(254, 255, 255); 
-  font-family: monospace;     
+  color: rgb(254, 255, 255);
+  margin-left: 2%;
+  font-family: monospace;
 }
 
 .titulo .user {
-  color: rgb(138, 226, 52); 
+  color: rgb(138, 226, 52);
 }
 
 .titulo .path {
@@ -30,17 +33,30 @@ header {
 .titulo .symbol {
   color: rgb(254, 255, 255);
 }
+
 .titulo .cursor {
   color: rgb(254, 255, 255);
   font-weight: bold;
   font-size: 33px;
-  animation: piscar 0.8s infinite; 
+  animation: piscar 0.8s infinite;
+}
+
+p {
+  font-size: 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+  color: bisque;
 }
 
 @keyframes piscar {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -58,6 +74,7 @@ header {
   transition: transform 0.3s;
 
 }
+
 .card-conteudo {
   display: flex;
   gap: 20px;
@@ -66,48 +83,127 @@ header {
   padding-left: 2%;
 }
 
-.imagem {
-  max-width: 10%;
-  height: auto;
-}
 .card-texto {
   text-align: justify;
 }
-.ficha {
-  font-size: medium;
-  font-style: italic;
-  margin-left: 2%;
-}
-.penguin {
-  z-index: 0;
-  position: fixed;
-  right: 1px;
-  bottom: 0px;
-  transform: rotate(-15deg);
-  image-rendering: pixelated;
-  width: 500px;
-  transition: 0.3s;
-}
 
-p {
-  font-size: 1rem;
-}
-
-h3 {
-  font-size: 1rem;
-  color: bisque;
-}
 .card-titulo {
   color: rgb(213, 240, 240);
   font-size: xx-large;
   margin-left: 2%;
 }
 
-/*Quando o mouse passa por cima*/
 .card:hover {
   border-left: 3.5px dotted rgb(177, 171, 171);
   border-bottom: 3.5px solid rgb(141, 140, 140);
-  transform: scale(1.02);
+  transform: scale(1.01);
+}
+
+.card-botao {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  user-select: none;
+}
+
+.card-botao::-webkit-details-marker {
+  display: none;
+}
+
+/* + e - dos tópicos */
+.card-botao::after {
+  content: "[+]";
+  color: rgb(138, 226, 52);
+  font-size: x-large;
+  font-weight: bold;
+  margin-right: 2%;
+  flex-shrink: 0;
+}
+
+.card[open] > .card-botao::after {
+  content: "[-]";
+  color: rgb(114, 159, 207);
+}
+
+.card-botao .card-titulo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*Mudança de cor no hover e quando o tópico está aberto apenas para o titulo*/
+.card-botao:hover .card-titulo {
+  color: rgb(114, 159, 207);
+}
+
+.card[open] > .card-botao .card-titulo {
+  color: rgb(114, 159, 207);
+}
+
+/* Parte da animação dos tópicos */
+@supports selector(::details-content) {
+  .card {
+    interpolate-size: allow-keywords;
+  }
+
+  .card::details-content {
+    height: 0;
+    opacity: 0;
+    overflow: clip;
+    transition:
+      height 0.45s ease,
+      opacity 0.45s ease,
+      content-visibility 0.45s allow-discrete;
+  }
+
+  .card[open]::details-content {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+@supports not selector(::details-content) {
+
+  .card[open]>.ficha,
+  .card[open]>.card-conteudo {
+    animation: abrir 0.35s ease;
+  }
+
+  @keyframes abrir {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.ficha {
+  font-size: medium;
+  font-style: italic;
+  margin-left: 2%;
+}
+
+.penguin {
+  cursor: pointer;
+  z-index: 1;
+  position: fixed;
+  right: -55px;
+  bottom: 0px;
+  image-rendering: pixelated;
+  width: 500px;
+  transition: 0.5s;
+}
+
+.imagem {
+  max-width: 10%;
+  height: auto;
 }
 
 .penguin:active {
