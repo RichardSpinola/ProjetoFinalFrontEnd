@@ -22,11 +22,12 @@ header {
   border-left: 3px dotted white;
   border-bottom: 3px solid white;
   padding: 10px;
-  margin: 30px 30px;
+  margin: 30px 450px 10px 30px;
   max-width: 1250px;
   color: white;
   backdrop-filter: blur(10px);
   transition: transform 0.3s;
+
 }
 .card-conteudo {
   display: flex;
@@ -46,7 +47,7 @@ header {
   font-style: italic;
 }
 .penguin {
-  z-index: -1;
+  z-index: 0;
   position: fixed;
   right: 1px;
   bottom: 0px;
@@ -69,7 +70,7 @@ h3 {
 
 /*Quando o mouse passa por cima*/
 .card:hover {
-  background-color: rgba(0, 0, 0, 0.809);
+ 
   border-left: 3.5px dotted rgb(177, 171, 171);
   border-bottom: 3.5px solid rgb(141, 140, 140);
   transform: scale(1.02);
