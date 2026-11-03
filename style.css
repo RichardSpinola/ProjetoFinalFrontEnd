@@ -15,8 +15,37 @@ header {
   padding: 1px 10px;
 }
 .titulo {
+  color: rgb(254, 255, 255); 
+  font-family: monospace;     
+}
+
+.titulo .user {
+  color: rgb(138, 226, 52); 
+}
+
+.titulo .path {
+  color: rgb(114, 159, 207);
+}
+
+.titulo .symbol {
   color: rgb(254, 255, 255);
 }
+.titulo .cursor {
+  color: rgb(254, 255, 255);
+  font-weight: bold;
+  font-size: 33px;
+  animation: piscar 0.8s infinite; 
+}
+
+@keyframes piscar {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 .card {
   background-color: rgba(0, 0, 0, 0.613);
   border-left: 3px dotted white;
@@ -33,6 +62,8 @@ header {
   display: flex;
   gap: 20px;
   align-items: center;
+  padding-right: 2%;
+  padding-left: 2%;
 }
 
 .imagem {
@@ -45,6 +76,7 @@ header {
 .ficha {
   font-size: medium;
   font-style: italic;
+  margin-left: 2%;
 }
 .penguin {
   z-index: 0;
@@ -56,9 +88,11 @@ header {
   width: 500px;
   transition: 0.3s;
 }
+
 p {
   font-size: 1rem;
 }
+
 h3 {
   font-size: 1rem;
   color: bisque;
@@ -66,11 +100,11 @@ h3 {
 .card-titulo {
   color: rgb(213, 240, 240);
   font-size: xx-large;
+  margin-left: 2%;
 }
 
 /*Quando o mouse passa por cima*/
 .card:hover {
- 
   border-left: 3.5px dotted rgb(177, 171, 171);
   border-bottom: 3.5px solid rgb(141, 140, 140);
   transform: scale(1.02);
